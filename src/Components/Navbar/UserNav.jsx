@@ -8,8 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/Components/ui/DropdownMenu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/Avatar";
 import Link from "next/link";
 
 export function UserNav() {
