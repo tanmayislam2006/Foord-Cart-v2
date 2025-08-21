@@ -1,4 +1,5 @@
 import Cheif from "@/Components/Home/Cheif";
+import DisplayFood from "@/Components/Home/DisplayFood";
 import Hero from "@/Components/Home/Hero";
 import Taste from "@/Components/Home/Taste";
 import WhyChoose from "@/Components/Home/WhyChoose";
@@ -8,7 +9,7 @@ function HomePage() {
   return (
     <div>
       <Hero />
-      {/* <DisplayFood /> */}
+      <DisplayFood />
       <WhyChoose />
       {/* <RegularDish /> */}
       <Cheif />
