@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-16 py-32 bg-primary/5 rounded-2xl overflow-hidden">
+    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-16 py-32 bg-primary/5 rounded-2xl overflow-hidden max-w-7xl mx-auto">
       {/* Left Content */}
       <div className="z-10 flex-1 max-w-lg w-full flex flex-col items-start mt-10 md:mt-0">
         <span className="px-6 py-1 mb-6 rounded-full bg-primary/10 text-primary font-bold text-sm tracking-widest uppercase shadow">
