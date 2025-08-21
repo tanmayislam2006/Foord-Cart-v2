@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link";
+// the link is not avoilable in the client component
 import  { useEffect, useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
