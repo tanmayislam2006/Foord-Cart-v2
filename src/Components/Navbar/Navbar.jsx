@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   return (
     <nav className="w-full bg-white shadow sticky top-0 z-20">
@@ -17,12 +19,10 @@ const Navbar = () => {
         </Link>
         
         {/* Navigation Links */}
-        {/* We're simplifying the list to just the basic public-facing routes. */}
         <ul className="flex gap-8 items-center">
           <li>
             <Link
               href="/"
-              // We check if the current pathname is '/' to style the 'Home' link.
               className={`font-semibold transition-colors hover:text-primary ${pathname === '/' ? 'text-primary' : 'text-gray-700'}`}
             >
               Home
@@ -31,7 +31,6 @@ const Navbar = () => {
           <li>
             <Link
               href="/menu"
-              // We check if the current pathname is '/menu' to style the 'Menu' link.
               className={`font-semibold transition-colors hover:text-primary ${pathname === '/menu' ? 'text-primary' : 'text-gray-700'}`}
             >
               All Menu
@@ -40,22 +39,52 @@ const Navbar = () => {
           <li>
             <Link
               href="/about"
-              // We check if the current pathname is '/about' to style the 'About' link.
               className={`font-semibold transition-colors hover:text-primary ${pathname === '/about' ? 'text-primary' : 'text-gray-700'}`}
             >
               About
             </Link>
           </li>
+          {session && (
+            <li>
+              <Link
+                href="/dashboard"
+                className={`font-semibold transition-colors hover:text-primary ${pathname === '/dashboard' ? 'text-primary' : 'text-gray-700'}`}
+              >
+                Dashboard
+              </Link>
+            </li>
+          )}
         </ul>
 
-        {/* Login Button */}
-        {/* This is a simple login button without any conditional rendering for a logged-in state. */}
-        <Link 
-          href="/login" 
-          className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full font-bold transition-colors hover:bg-primary-dark"
-        >
-          Login
-        </Link>
+        {/* Login/Logout Button */}
+        <div className="flex items-center gap-4">
+          {session ? (
+            <>
+              <span className="font-semibold">{session.user.name}</span>
+              <button
+                onClick={() => signOut()}
+                className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full font-bold transition-colors hover:bg-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full font-bold transition-colors hover:bg-primary-dark"
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="flex items-center gap-2 bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors hover:bg-gray-300"
+              >
+                Register
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
