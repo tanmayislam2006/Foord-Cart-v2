@@ -126,7 +126,7 @@ const ManageDish = () => {
                 <td className="py-3 px-4 align-middle">${parseFloat(dish.price).toFixed(2)}</td>
                 <td className="px-4 py-2 align-middle flex justify-center gap-3">
                   <button
-                    onClick={() => router.push(`/updateDish/${dish._id}`)}
+                    onClick={() => router.push(`/dashboard/updateDish/${dish._id}`)}
                     className="text-yellow-500"
                   >
                     <FaPen size={20} />
