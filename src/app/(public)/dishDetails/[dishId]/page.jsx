@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaStar, FaMinus, FaPlus } from "react-icons/fa";
 
 const DishDetails = ({ params }) => {
-  const id = params.dishId; 
+  const id = params?.dishId; 
   const [dish, setDish] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -102,7 +103,7 @@ const DishDetails = ({ params }) => {
             </div>
             <button
               className="bg-primary text-white px-8 py-3 rounded-full font-bold shadow hover:bg-primary/90 transition w-full sm:w-auto"
-              onClick={() => alert(`Added ${quantity} ${dish.name}(s) to cart`)}
+              onClick={() => toast(`Features Will Be Coming Soon`)}
               disabled={dish.stock === 0}
             >
               {dish.stock === 0 ? "Out of Stock" : "Add to Cart"}

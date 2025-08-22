@@ -20,3 +20,18 @@ export async function GET(request) {
     return NextResponse.json({ error: "Unable to fetch menu" }, { status: 500 });
   }
 }
+// added dishes 
+export async function POST(request) {
+  try {
+    const client = await clientPromise;
+    const db = client.db("foodCartUser");
+    const menuCollection = db.collection("allMenu");
+
+    const newDish = await request.json();
+    const result = await menuCollection.insertOne(newDish);
+    return NextResponse.json(result);
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: "Unable to add dish" }, { status: 500 });
+  }
+}
