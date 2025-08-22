@@ -21,16 +21,17 @@ const ManageDish = () => {
     // if (!session?.user?.email) return;
     setLoading(true);
     setError(null);
-const res = await fetch(`/api/user-menu?email=tanmayislam823@gmail.com`);
-    const data = await res.json();
 
-    if (res.ok) {
-      setMyDishes(data);
-      setLoading(false);
-    } else {
-      setError("Failed to load dishes.");
-      setLoading(false);
-    }
+    fetch(`/api/menu/user?email=guest`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMyDishes(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Failed to load dishes.");
+        setLoading(false);
+      });
   }, [session?.user?.email, refresh]);
 
   // Delete dish
