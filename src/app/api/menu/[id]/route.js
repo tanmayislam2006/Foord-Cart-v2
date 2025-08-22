@@ -35,3 +35,24 @@ export async function DELETE(request, { params }) {
     );
   }
 }
+// update a dish with id
+export async function PUT(request, { params }) {
+  const { id } = await params;
+  const body = await request.json();
+  try {
+    const client = await clientPromise;
+    const db = client.db("foodCartUser");
+    const menuCollection = db.collection("allMenu");
+    const result = await menuCollection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: body }
+    );
+    return NextResponse.json(result);
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json(
+      { error: "Unable to update dish" },
+      { status: 500 }
+    );
+  }
+}
