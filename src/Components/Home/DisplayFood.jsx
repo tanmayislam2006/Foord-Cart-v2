@@ -59,7 +59,7 @@ const DisplayFood = () => {
   }
 
   return (
-    <div className="w-full py-8 px-2 md:px-0">
+    <div className="max-w-7xl mx-auto w-full py-8 px-2 md:px-0">
       <h2 className="text-3xl md:text-4xl font-extrabold text-center text-primary mb-2">
         Popular Dishes
       </h2>

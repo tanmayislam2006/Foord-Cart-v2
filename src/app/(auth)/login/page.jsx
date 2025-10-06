@@ -30,13 +30,13 @@ export default function LoginPage() {
   };
 
   // Google login handler
-  const handleGoogleLogin = async () => {
-    try {
-      await signIn("google", { callbackUrl: "/" });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const handleGoogleLogin = async () => {
+  try {
+    await signIn("google", { callbackUrl: "/dashboard" });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
     <div className="grid place-items-center h-screen">
